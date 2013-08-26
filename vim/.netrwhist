@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/rlipas/.local/share'
+let g:netrw_dirhist_2='/home/rlipas'
+let g:netrw_dirhist_3='/home/rlipas/Configs'
+let g:netrw_dirhist_4='/home/rlipas/Configs/vim'
+let g:netrw_dirhist_5='/home/rlipas/Configs/vim/bundle'

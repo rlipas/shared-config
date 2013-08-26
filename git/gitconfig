@@ -1,0 +1,7 @@
+[user]
+	name = Ricardo Lipas Augusto
+	email = ricardo.lipas@gmail.com
+[core]
+	editor = gvim -f
+[merge]
+	tool = gvimdiff -f
