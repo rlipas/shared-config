@@ -119,6 +119,9 @@ let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
 
+" Change pylint default indentation to 2 spaces
+let g:syntastic_python_pylint_post_args='--indent-string="  "'
+
 " Remove the small delay between pressing Esc and entering Normal mode.
 if ! has('gui_running')
   set ttimeoutlen=10

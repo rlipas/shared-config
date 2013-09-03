@@ -2,3 +2,6 @@
 # http://www.terminally-incoherent.com/blog/2012/10/17/vim-solarized-and-tmux/
 export TERM="screen-256color"
 alias tmux="tmux -2"
+
+# Python startup script
+export PYTHONSTARTUP="$HOME/.pystartup"

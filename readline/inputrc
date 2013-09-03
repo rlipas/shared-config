@@ -1,0 +1,7 @@
+# I prefer vi-style editing:
+set editing-mode vi
+
+# Edit using a single line:
+set horizontal-scroll-mode On
+
+Tab: complete
