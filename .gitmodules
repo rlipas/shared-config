@@ -31,3 +31,6 @@
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
+[submodule "vim/bundle/vim-tbone"]
+	path = vim/bundle/vim-tbone
+	url = https://github.com/tpope/vim-tbone.git

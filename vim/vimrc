@@ -119,8 +119,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
 
-" Change pylint default indentation to 2 spaces
-let g:syntastic_python_pylint_post_args='--indent-string="  "'
+" Change pylint default indentation to 2 spaces and 132 columns
+let g:syntastic_python_pylint_post_args='--indent-string="  " --max-line-length=132'
 
 " Remove the small delay between pressing Esc and entering Normal mode.
 if ! has('gui_running')
@@ -137,7 +137,7 @@ endif
   set guioptions=c
 
   " Automatically leave insert mode after 'updatetime' (4s by default).
-  au CursorHoldI * stopinsert
+  " au CursorHoldI * stopinsert
 
   " Disable h,j,k,l keys by default.
   autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
