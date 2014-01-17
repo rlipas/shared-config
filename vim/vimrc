@@ -8,16 +8,16 @@ set nocompatible
 " Colorscheme settings.
 syntax enable
 set background=dark
-colorscheme solarized
-let g:airline_theme='solarized'
 
 " UTF8 or die.
 set encoding=utf8
 
-" GUI window size and font
+" GUI window size, font and theme
 if has('gui_running')
   set columns=132 lines=43
   set guifont=Source\ Code\ Pro\ 12
+  colorscheme solarized
+  let g:airline_theme='solarized'
 endif
 
 " Numbered lines.
@@ -140,10 +140,10 @@ endif
   " au CursorHoldI * stopinsert
 
   " Disable h,j,k,l keys by default.
-  autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+  " autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
   " Toggle hardmode
-  nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+  " nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
   " Disable arrow keys.
-  let g:HardMode_level = 'wannabe'
+  " let g:HardMode_level = 'wannabe'

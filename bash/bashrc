@@ -5,3 +5,5 @@ alias tmux="tmux -2"
 
 # Python startup script
 export PYTHONSTARTUP="$HOME/.pystartup"
+
+eval `dircolors ~/.dir_colors`
