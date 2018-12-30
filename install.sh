@@ -20,9 +20,10 @@ ln -sf $DIR/readline/inputrc .inputrc
 #.vim + .vimrc
 ln -sf $DIR/vim/ .vim
 ln -sf $DIR/vim/vimrc .vimrc
+vim -c PlugInstall -c qa
 
 #.tmux.conf
 ln -sf $DIR/tmux/tmux.conf .tmux.conf
 
 #.dir_colors
-ln -sf $DIR/dircolors-solarized/dircolors.256dark .dir_colors
+ln -sf $DIR/dircolors-solarized/dircolors.256dark .dircolors
