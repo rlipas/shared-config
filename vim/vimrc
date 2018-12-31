@@ -1,17 +1,23 @@
 " Load all plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim'
 Plug 'Yggdroot/indentLine'
+Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 " Use Vim defaults
@@ -98,13 +104,16 @@ autocmd BufWinLeave * call clearmatches()
 let g:airline_powerline_fonts = 1
 
 " Map tagbar
-map <leader>o :TagbarOpenAutoClose<CR>
+nmap <silent> <leader>o :TagbarOpenAutoClose<CR>
+
+" Supertab scrolls down the list of completions
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Map FZF
-map <leader>f :Files<CR>
-map <leader>b :Buffers<CR>
-map <leader>l :Lines<CR>
-map <leader>t :Tags<CR>
+nmap <silent> <leader>f :Files<CR>
+nmap <silent> <leader>b :Buffers<CR>
+nmap <silent> <leader>l :Lines<CR>
+nmap <silent> <leader>t :Tags<CR>
 
 " Better ALE interface
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -115,7 +124,11 @@ let g:ale_sign_warning = '!'
 " Open NERDTree if vim arg is a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-map <leader>n :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 
 " Set better vertical bar for indentation
-let g:indentLine_char = '¦'
+let g:indentLine_char = ':'
+
+" Use deoplete-jedi completion
+let g:deoplete#enable_at_startup = 1
+let g:jedi#completions_enabled = 0
