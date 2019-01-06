@@ -26,4 +26,4 @@ vim -c PlugInstall -c qa
 ln -sf $DIR/tmux/tmux.conf .tmux.conf
 
 #.dir_colors
-ln -sf $DIR/dircolors-solarized/dircolors.256dark .dircolors
+ln -sf $DIR/dircolors-zenburn/dircolors .dircolors
