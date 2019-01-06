@@ -26,14 +26,15 @@ set nocompatible
 let mapleader=" "
 
 " Colorscheme settings.
+let g:zenburn_transparent = 1
 colorscheme zenburn
-set background=dark
+hi Normal guibg=#3f3f3f ctermbg=None
 
 " Minimal GUI, window size, font
 if has('gui_running')
   set guioptions=ac
   set columns=132 lines=43
-  set guifont=SauceCodePro\ Nerd\ Font\ Mono\ SemiBold\ 9
+  set guifont=InconsolataGo\ Nerd\ Font\ 10
 endif
 
 " Numbered lines.
