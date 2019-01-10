@@ -101,6 +101,9 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" Easy cycling of buffers
+nmap <C-tab> :bnext<CR>
+
 " Prettify airline
 let g:airline_powerline_fonts = 1
 
