@@ -25,14 +25,13 @@ import XMonad.Util.WorkspaceCompare (getSortByXineramaRule)
 
 --------------------------------------------------------------------------------
 main = do
-  spawn "setxkbmap -layout us,pt,us -variant ,,intl -option  'grp:lctrl_lwin_toggle'"
-
   screencount <- countScreens
   if screencount > 1
     then spawn "xrandr --output HDMI-1 --auto --primary --pos 0x0 --output eDP-1 --auto --pos 277x1080"
     else spawn "xrandr --output HDMI-1 --off --output eDP-1 --auto --primary"
 
-  spawn $ "feh --no-fehbg --bg-fill Imagens/Wallpapers/frozen_lines_of_force_by_b33rheart_dbq7orp.png Imagens/Wallpapers/caramelemarac_by_senzune_dbxl64j.png;" ++
+  spawn $ "setxkbmap -layout us,pt,us -variant ,,intl -option  'grp:lctrl_lwin_toggle';" ++
+          "feh --no-fehbg --bg-fill Imagens/Wallpapers/frozen_lines_of_force_by_b33rheart_dbq7orp.png Imagens/Wallpapers/caramelemarac_by_senzune_dbxl64j.png;" ++
           "xcompmgr -f -D 5;"
 
   xmobar <- spawnPipe "xmobar"
