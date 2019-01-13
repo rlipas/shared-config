@@ -12,8 +12,9 @@ Config { font = "xft:InconsolataGo Nerd Font:size=11"
                     , Run Date "<fc=#dcdccc>%a %b %_d %Y %H:%M:%S</fc>" "date" 10
                     , Run Wireless "wlo1" ["-t","<essid> <quality>%"] 50
                     , Run Weather "LPPR" ["-t","Porto: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Kbd [("us", "US"), ("us(intl)", "US-INT"), ("pt", "PT")]
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=white>xmonad</fc> | %LPPR% | %wlo1wi% } %StdinReader% | %date% { %cpu% %coretemp% | %memory% %swap% | %disku% | %battery%"
+       , template = "<fc=white>xmonad</fc> | %LPPR% | %wlo1wi% | %kbd% } %StdinReader% | %date% { %cpu% %coretemp% | %memory% %swap% | %disku% | %battery%"
        }
