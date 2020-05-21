@@ -6,31 +6,31 @@ DIR=`dirname $0`
 cd
 
 # .bashrc
-ln -sf $DIR/bash/bashrc .bashrc
+ln -srf $DIR/bash/bashrc .bashrc
 
 # .gitconfig
-ln -sf $DIR/git/gitconfig .gitconfig
+ln -srf $DIR/git/gitconfig .gitconfig
 
 # .pystartup
-ln -sf $DIR/python/pystartup .pystartup
+ln -srf $DIR/python/pystartup .pystartup
 
 # .inputrc
-ln -sf $DIR/readline/inputrc .inputrc
+ln -srf $DIR/readline/inputrc .inputrc
 
 # .vim + .vimrc
-ln -sf $DIR/vim/ .vim
-ln -sf $DIR/vim/vimrc .vimrc
+ln -srf $DIR/vim/ .vim
+ln -srf $DIR/vim/vimrc .vimrc
 vim -c PlugInstall -c qa
 
 # .dir_colors
-ln -sf $DIR/dircolors-zenburn/dircolors .dircolors
+ln -srf $DIR/dircolors-zenburn/dircolors .dircolors
 
 # xmonad.hs + xmobarrc
 mkdir -p .xmonad
-ln -sf $DIR/xmonad/xmonad.hs .xmonad/xmonad.hs
+ln -srf $DIR/xmonad/xmonad.hs .xmonad/xmonad.hs
 mkdir -p .config/xmobar
-ln -sf $DIR/xmobar/xmobarrc .config/xmobar/xmobarrc
+ln -srf $DIR/xmobar/xmobarrc .config/xmobar/xmobarrc
 
 # kitty.conf
 mkdir -p .config/kitty
-ln -fs $DIR/kitty/kitty.conf .config/kitty/kitty.conf
+ln -srf $DIR/kitty/kitty.conf .config/kitty/kitty.conf

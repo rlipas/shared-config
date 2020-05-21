@@ -18,6 +18,9 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'Yggdroot/indentLine'
 Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
+Plug 'leafgarland/typescript-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'farmergreg/vim-lastplace'
 call plug#end()
 
 " Use Vim defaults
@@ -122,6 +125,8 @@ nmap <silent> <leader>t :Tags<CR>
 " Better ALE interface
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <leader>x <Plug>(ale_fix)
+nmap <silent> <leader>d <Plug>(ale_go_to_definition)
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '!'
 
@@ -129,6 +134,7 @@ let g:ale_sign_warning = '!'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>e :NERDTreeFind<CR>
 
 " Set better vertical bar for indentation
 let g:indentLine_char = ':'
@@ -136,3 +142,21 @@ let g:indentLine_char = ':'
 " Use deoplete-jedi completion
 let g:deoplete#enable_at_startup = 1
 let g:jedi#completions_enabled = 0
+
+" Configure fixers and linters
+ let g:ale_fixers = {
+  \   'c': ['clang-format', 'remove_trailing_lines', 'trim_whitespace'],
+  \   'python': ['black', 'isort', 'remove_trailing_lines', 'trim_whitespace'],
+  \   'javascript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
+  \   'typescript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
+  \   'json': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+  \   'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+  \   'scss': ['stylelint', 'remove_trailing_lines', 'trim_whitespace'],
+  \   'html': ['html-beautify', 'remove_trailing_lines', 'trim_whitespace']
+  \}
+
+ let g:ale_c_parse_makefile = 1
+ let g:ale_c_parse_compile_commands = 1
+ let g:ale_c_clangformat_options = '-style="{BasedOnStyle: llvm, IndentWidth: 4}" '
+ let g:ale_python_pylint_options = '--load-plugins pylint_django -dC0330'
+ let g:ale_javascript_prettier_options = '--tab-width 4'

@@ -1,8 +1,8 @@
-Config { font = "xft:InconsolataGo Nerd Font:size=11"
+Config { font = "xft:InconsolataGo Nerd Font:size=12"
        , bgColor = "black"
        , fgColor = "grey"
        , position = Top
-       , commands = [ Run StdinReader
+       , commands = [ Run XMonadLog
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 50
                     , Run CoreTemp ["-t", "<core0>C", "-L", "40", "-H", "60", "-l", "lightblue", "-h", "red"] 50
                     , Run Memory ["-t","Mem: <usedratio>%"] 50
@@ -16,5 +16,5 @@ Config { font = "xft:InconsolataGo Nerd Font:size=11"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=white>xmonad</fc> | %LPPR% | %wlo1wi% | %kbd% } %StdinReader% | %date% { %cpu% %coretemp% | %memory% %swap% | %disku% | %battery%"
+       , template = "<fc=white>xmonad</fc> | %LPPR% | %wlo1wi% | %kbd% } %XMonadLog% | %date% { %cpu% %coretemp% | %memory% %swap% | %disku% | %battery%"
        }
