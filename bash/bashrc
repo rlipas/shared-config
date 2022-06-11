@@ -118,3 +118,18 @@ fi
 export PYTHONSTARTUP="$HOME/.pystartup"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+function cdsrc() {
+    DEVICE=nvme0n1p8
+    LABEL=src
+
+    if [ -e /dev/$DEVICE -a ! -e /dev/disk/by-label/$LABEL ]; then
+        udisksctl unlock -b /dev/$DEVICE;
+    fi
+
+    if [ -e /dev/disk/by-label/$LABEL -a ! -e /media/$USERNAME/$LABEL ]; then
+        udisksctl mount --block-device /dev/disk/by-label/$LABEL
+    fi
+
+    cd /media/$USERNAME/$LABEL/
+}

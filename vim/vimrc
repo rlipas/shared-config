@@ -14,10 +14,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/deoplete.nvim'
 Plug 'Yggdroot/indentLine'
-Plug 'davidhalter/jedi-vim'
-Plug 'zchee/deoplete-jedi'
 Plug 'leafgarland/typescript-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'farmergreg/vim-lastplace'
@@ -139,24 +137,28 @@ nmap <leader>e :NERDTreeFind<CR>
 " Set better vertical bar for indentation
 let g:indentLine_char = ':'
 
-" Use deoplete-jedi completion
-let g:deoplete#enable_at_startup = 1
-let g:jedi#completions_enabled = 0
+" Use deoplete+ale completion
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('sources', {'_': ['ale'],})
+let g:ale_completion_enabled = 1
 
 " Configure fixers and linters
- let g:ale_fixers = {
-  \   'c': ['clang-format', 'remove_trailing_lines', 'trim_whitespace'],
-  \   'python': ['black', 'isort', 'remove_trailing_lines', 'trim_whitespace'],
-  \   'javascript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
-  \   'typescript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
-  \   'json': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-  \   'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-  \   'scss': ['stylelint', 'remove_trailing_lines', 'trim_whitespace'],
-  \   'html': ['html-beautify', 'remove_trailing_lines', 'trim_whitespace']
-  \}
+let g:ale_linters = {'python': ['pyls']}
+let g:ale_fixers = {
+ \   'c': ['clang-format', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'cpp': ['clang-format', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'python': ['black', 'isort', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'javascript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'typescript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'json': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'scss': ['stylelint', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'html': ['html-beautify', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'haskell': ['hindent', 'remove_trailing_lines', 'trim_whitespace']
+ \}
 
- let g:ale_c_parse_makefile = 1
- let g:ale_c_parse_compile_commands = 1
- let g:ale_c_clangformat_options = '-style="{BasedOnStyle: llvm, IndentWidth: 4}" '
- let g:ale_python_pylint_options = '--load-plugins pylint_django -dC0330'
- let g:ale_javascript_prettier_options = '--tab-width 4'
+let g:ale_c_parse_makefile = 1
+let g:ale_c_parse_compile_commands = 1
+let g:ale_c_clangformat_options = '-style="{BasedOnStyle: llvm, IndentWidth: 4}" '
+let g:ale_python_pylint_options = '--load-plugins pylint_django -dC0330'
+let g:ale_javascript_prettier_options = '--tab-width 4'

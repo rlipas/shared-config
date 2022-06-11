@@ -21,7 +21,7 @@ import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
 import XMonad.Prompt.Shell
 import XMonad.Util.Cursor
-import XMonad.Util.Run (safeSpawn, safeSpawnProg, runProcessWithInput)
+import XMonad.Util.Run (unsafeSpawn, safeSpawn, safeSpawnProg, runProcessWithInput)
 import XMonad.Util.Themes
 import XMonad.Util.EZConfig
 import XMonad.Util.WorkspaceCompare (getSortByXineramaRule)
@@ -62,14 +62,19 @@ myStartupHook = do
 
   screencount <- countScreens
   if screencount > 1
-    then spawn "xrandr --output DP-1-2 --auto --primary --pos 0x0 --output eDP-1-1 --auto --left-of DP-1-2"
-    else spawn "xrandr --output DP-1-2 --off --output eDP-1-1 --auto --primary"
+    then do
+        spawn "xrandr --output DP-2 --auto --primary --pos 0x0 --output eDP-1 --auto --left-of DP-2"
+        spawn "xsetwacom set 'Wacom Bamboo 2FG 4x5 Pen stylus' MapToOutput next"
+        spawn "xsetwacom set 'Wacom Bamboo 2FG 4x5 Pen eraser' MapToOutput next"
+    else spawn "xrandr --output DP-2 --off --output eDP-1 --auto --primary"
+
+  spawn "xinput set-prop 'Wacom Bamboo 2FG 4x5 Finger touch' 343 5.0"
+  spawn "xinput set-prop 'Wacom Bamboo 2FG 4x5 Finger touch' 344 5.0"
 
   spawn $ "setxkbmap -layout us,pt,us -variant ,,intl -option  'grp:lctrl_lwin_toggle';" ++
           "feh --no-fehbg --bg-fill Imagens/Wallpapers/any_minute_now_by_aenami_daht6vs.png Imagens/Wallpapers/timeless_by_aenami_dc6pscr.png;" ++
           "xcompmgr -f -D 5;"
   safeSpawnProg "xmobar"
-
   startupHook def
 
 myDynLog = dynamicLogString def
