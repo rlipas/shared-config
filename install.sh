@@ -26,8 +26,8 @@ vim -c PlugInstall -c qa
 ln -srf $DIR/dircolors-zenburn/dircolors .dircolors
 
 # xmonad.hs + xmobarrc
-mkdir -p .xmonad
-ln -srf $DIR/xmonad/xmonad.hs .xmonad/xmonad.hs
+mkdir -p .config/xmonad
+ln -srf $DIR/xmonad/xmonad.hs .config/xmonad/xmonad.hs
 mkdir -p .config/xmobar
 ln -srf $DIR/xmobar/xmobarrc .config/xmobar/xmobarrc
 

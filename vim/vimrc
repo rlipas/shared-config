@@ -143,22 +143,23 @@ let g:indentLine_char = ':'
 let g:ale_completion_enabled = 1
 
 " Configure fixers and linters
-let g:ale_linters = {'python': ['pyls']}
+let g:ale_linters = {'python': ['pylsp']}
 let g:ale_fixers = {
  \   'c': ['clang-format', 'remove_trailing_lines', 'trim_whitespace'],
  \   'cpp': ['clang-format', 'remove_trailing_lines', 'trim_whitespace'],
  \   'python': ['black', 'isort', 'remove_trailing_lines', 'trim_whitespace'],
- \   'javascript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
- \   'typescript': ['eslint', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'javascript': ['eslint', 'prettier', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'typescript': ['eslint', 'prettier', 'remove_trailing_lines', 'trim_whitespace'],
  \   'json': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
  \   'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
  \   'scss': ['stylelint', 'remove_trailing_lines', 'trim_whitespace'],
  \   'html': ['html-beautify', 'remove_trailing_lines', 'trim_whitespace'],
- \   'haskell': ['hindent', 'remove_trailing_lines', 'trim_whitespace']
+ \   'haskell': ['hindent', 'remove_trailing_lines', 'trim_whitespace'],
+ \   'nix': ['statix', 'remove_trailing_lines', 'trim_whitespace']
  \}
 
 let g:ale_c_parse_makefile = 1
 let g:ale_c_parse_compile_commands = 1
-let g:ale_c_clangformat_options = '-style="{BasedOnStyle: llvm, IndentWidth: 4}" '
+" let g:ale_c_clangformat_options = '-style="{BasedOnStyle: llvm, IndentWidth: 4}" '
 let g:ale_python_pylint_options = '--load-plugins pylint_django -dC0330'
-let g:ale_javascript_prettier_options = '--tab-width 4'
+" let g:ale_javascript_prettier_options = '--tab-width 4'

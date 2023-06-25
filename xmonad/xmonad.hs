@@ -15,7 +15,7 @@ import XMonad.Layout.ResizableTile (ResizableTall(..), MirrorResize(..))
 import XMonad.Layout.ToggleLayouts (ToggleLayout(..), toggleLayouts)
 import XMonad.Layout.NoFrillsDecoration (noFrillsDeco)
 import XMonad.Layout.Spacing (spacingRaw, Border(..))
-import XMonad.Layout.PerAspect (ifVertical)
+-- import XMonad.Layout.PerAspect (ifVertical)
 import qualified XMonad.Layout.Magnifier as Mag
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
@@ -26,6 +26,7 @@ import XMonad.Util.Themes
 import XMonad.Util.EZConfig
 import XMonad.Util.WorkspaceCompare (getSortByXineramaRule)
 import XMonad.Hooks.ManageDocks
+import XMonad.Actions.CycleWS (nextWS, prevWS)
 
 --------------------------------------------------------------------------------
 main =
@@ -49,6 +50,8 @@ main =
       , ("M-m", sendMessage Mag.Toggle)
       , ("M-r",     rotateScreen)
       , ("M-<Esc>", sendMessage (Toggle "Full"))
+      , ("C-M1-<Left>",  prevWS)
+      , ("C-M1-<Right>",  nextWS)
       , ("<XF86AudioMute>", spawn "amixer -q -D pulse set Master toggle")
       , ("<XF86AudioLowerVolume>", spawn "amixer -q -D pulse set Master 5%-")
       , ("<XF86AudioRaiseVolume>", spawn "amixer -q -D pulse set Master 5%+")
@@ -63,7 +66,7 @@ myStartupHook = do
   screencount <- countScreens
   if screencount > 1
     then do
-        spawn "xrandr --output DP-2 --auto --primary --pos 0x0 --output eDP-1 --auto --left-of DP-2"
+        spawn "xrandr --output DP-2 --auto --primary --pos 0x0 --output eDP-1 --auto --right-of DP-2"
         spawn "xsetwacom set 'Wacom Bamboo 2FG 4x5 Pen stylus' MapToOutput next"
         spawn "xsetwacom set 'Wacom Bamboo 2FG 4x5 Pen eraser' MapToOutput next"
     else spawn "xrandr --output DP-2 --off --output eDP-1 --auto --primary"
@@ -71,9 +74,10 @@ myStartupHook = do
   spawn "xinput set-prop 'Wacom Bamboo 2FG 4x5 Finger touch' 343 5.0"
   spawn "xinput set-prop 'Wacom Bamboo 2FG 4x5 Finger touch' 344 5.0"
 
-  spawn $ "setxkbmap -layout us,pt,us -variant ,,intl -option  'grp:lctrl_lwin_toggle';" ++
-          "feh --no-fehbg --bg-fill Imagens/Wallpapers/any_minute_now_by_aenami_daht6vs.png Imagens/Wallpapers/timeless_by_aenami_dc6pscr.png;" ++
-          "xcompmgr -f -D 5;"
+  spawn "sleep 1 && setxkbmap -layout us,pt,us -variant ,,intl -option  'grp:lctrl_lwin_toggle'"
+  spawn "feh --no-fehbg --bg-fill -z Imagens/Wallpapers/;"
+  spawn "xcompmgr -f -D 5;"
+
   safeSpawnProg "xmobar"
   startupHook def
 
@@ -95,7 +99,7 @@ myDynLog = dynamicLogString def
 myLayouts = toggleLayouts (noBorders Full) $ Mag.magnifierOff (avoidStruts $ noFrillsDeco shrinkText myTheme $ gaps 5 others)
   where
     gaps i = spacingRaw False (Border i i i i) True (Border i i i i) True
-    others = ResizableTall 1 (1.5/100) (3/5) [] `ifVertical` (Mirror $ ResizableTall 1 (3/100) (3/4) [])
+    others = ResizableTall 1 (1.5/100) (3/5) [] -- `ifVertical` (Mirror $ ResizableTall 1 (3/100) (3/4) [])
 
 --------------------------------------------------------------------------------
 -- | Customize the way 'XMonad.Prompt' looks and behaves.  It's a
